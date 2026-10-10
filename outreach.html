@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{if(localStorage.getItem('ceag-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+<title>Outreach &mdash; Cornell Extreme Astrophysics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .blog-empty{ display:flex; gap:20px; align-items:flex-start; padding: 26px; border:1px dashed var(--line-strong); background:transparent; }
+  .blog-empty svg{ width:34px; height:34px; flex:none; color:var(--signal-dim); margin-top:2px; }
+  .blog-empty h3{ font-size:16px; color:var(--starlight); margin-bottom:6px; }
+  .blog-empty p{ font-size:13.6px; color:var(--text-dim); line-height:1.6; }
+
+  .video-featured-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .video-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  @media (max-width:900px){ .video-featured-grid{ grid-template-columns:1fr; } .video-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .video-grid{ grid-template-columns:1fr; } }
+
+  .video-feature, .video-card{
+    background: var(--card-bg); border:1px solid var(--line, var(--btn-border-color));
+    border-radius: var(--radius-m); overflow:hidden; display:flex; flex-direction:column;
+  }
+  .video-frame{
+    position:relative; width:100%; aspect-ratio:16/9; background-size:cover; background-position:center;
+    background-color: var(--panel-raised); cursor:pointer; flex:none;
+  }
+  .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .video-play{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:58px; height:58px; border-radius:50%; border:1px solid rgba(255,255,255,0.7);
+    background: rgba(10,10,8,0.55); color:#f3f2ec; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition: background .15s ease, transform .15s ease, border-color .15s ease;
+  }
+  .video-play svg{ width:22px; height:22px; margin-left:3px; }
+  .video-frame:hover .video-play{ background: var(--signal); border-color: var(--signal); transform:translate(-50%,-50%) scale(1.06); }
+  .video-card .video-play{ width:44px; height:44px; }
+  .video-card .video-play svg{ width:17px; height:17px; }
+  .video-frame.is-playing .video-play{ display:none; }
+
+  .video-meta{ padding:18px 20px 20px; }
+  .video-card .video-meta{ padding:14px 16px 16px; }
+  .video-feature h3{ font-size:17px; line-height:1.35; color:var(--starlight); margin-bottom:6px; }
+  .video-card h4{ font-size:13.5px; line-height:1.4; font-family:var(--font-display); font-weight:700; letter-spacing:0.01em; color:var(--starlight); margin-bottom:5px; }
+  .video-meta .meta{ font-size:12px; color:var(--text-dim); font-family:var(--font-mono, monospace); }
+  .video-title-link{ color:inherit; text-decoration:none; }
+  .video-title-link:hover{ color:var(--signal); text-decoration:underline; }
+</style>
+</head>
+<body data-page="outreach">
+<div id="bgfield"></div>
+<canvas id="stars"></canvas>
+<div class="nebula n1"></div>
+<div class="nebula n2"></div>
+<div class="nebula n3"></div>
+
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--signal)">
+        <ellipse cx="15" cy="18" rx="11" ry="4.4" transform="rotate(-16 15 18)" opacity="0.55"></ellipse>
+        <circle cx="24.6" cy="14.2" r="1.4" fill="currentColor" stroke="none"></circle>
+        <path d="M6 24 A11 11 0 0 1 24 17" stroke-linecap="round"></path>
+        <path d="M15 21 L15 13 M11.5 15.5 L15 13 L18.5 15.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+      </svg>
+      <span class="brand-text">
+        <span class="full">Cornell Extreme Astrophysics</span>
+        <span class="sub">Radio Astronomy Group</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="team.html" data-nav="team">Team</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="outreach.html" data-nav="outreach">Outreach</a></li>
+      <li><a href="contact.html" data-nav="contact">Contact</a></li>
+    </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.1 5.9l-1.5 1.5M7.4 16.6l-1.5 1.5M18.1 18.1l-1.5-1.5M7.4 7.4 5.9 5.9" stroke-linecap="round"></path></svg>
+        </button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+    </button>
+      </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <!-- <p class="eyebrow">Outreach</p> -->
+      <h2 style="margin-top:14px; font-size:clamp(30px,3.8vw,46px); color:var(--starlight);">Sharing the extreme universe</h2>
+      <p class="dek" style="margin-top:14px;">A gravitational-wave background made of black hole mergers, and radio flashes from other galaxies, are strange enough to be worth explaining well. We try to.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="talks">
+    <div class="section-head" data-observe>
+      <p class="eyebrow">Featured</p>
+      <!-- <h2>Recent talks</h2> -->
+      <p class="lede">Recordings of groups public lectures, colloquia, and interviews.</p>
+    </div>
+    <!-- VIDEOS:FEATURED:START -->
+    <div class="video-featured-grid" data-observe>
+      <div class="video-feature" data-video-id="Ff0b8hrM4G0" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/Ff0b8hrM4G0/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h3><a class="video-title-link" href="https://www.youtube.com/watch?v=Ff0b8hrM4G0" target="_blank" rel="noopener">Gravitational waves and why you exist | Lydia Guertin | TEDxHaverford College</a></h3>
+          <p class="meta">Lydia Guertin &middot; TEDx Talks</p>
+        </div>
+      </div>
+      <div class="video-feature" data-video-id="R_vcczQrKaM" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/R_vcczQrKaM/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h3><a class="video-title-link" href="https://www.youtube.com/watch?v=R_vcczQrKaM" target="_blank" rel="noopener">Eavesdropping on our (Intergalactic) Neighbors with Pulsar Timing Arrays | Spring &rsquo;26 Lecture Series</a></h3>
+          <p class="meta">Cornell Astronomical Society @ Fuertes Observatory</p>
+        </div>
+      </div>
+      <div class="video-feature" data-video-id="nzSvlPPr3pk" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/nzSvlPPr3pk/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h3><a class="video-title-link" href="https://www.youtube.com/watch?v=nzSvlPPr3pk" target="_blank" rel="noopener">The Astrophysics of Fast Radio Bursts</a></h3>
+          <p class="meta">James M. Cordes &middot; Flatiron Institute</p>
+        </div>
+      </div>
+    </div>
+    <!-- VIDEOS:FEATURED:END -->
+
+    <div class="section-head" style="margin-top:28px;" data-observe>
+      <p class="eyebrow">More</p>
+      <h2>Talks &amp; interviews</h2>
+    </div>
+    <!-- VIDEOS:GRID:START -->
+    <div class="video-grid" data-observe>
+      <div class="video-card" data-video-id="oAAdmqHJV8g" data-embeddable="false" data-video-url="https://www.youtube.com/watch?v=oAAdmqHJV8g">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/oAAdmqHJV8g/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Watch on YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=oAAdmqHJV8g" target="_blank" rel="noopener">Fast Radio Bursts: Probes and Puzzles from Nanosecond to Gigaparsecs</a></h4>
+          <p class="meta">James M. Cordes &middot; opens on YouTube</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="RfbP4Xw1_NM" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/RfbP4Xw1_NM/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=RfbP4Xw1_NM" target="_blank" rel="noopener">Gravitational Waves are the New Window on the Universe</a></h4>
+          <p class="meta">James M. Cordes &middot; Cornell CAPE</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="FonXhgeCScc" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/FonXhgeCScc/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=FonXhgeCScc" target="_blank" rel="noopener">Are We Alone? (Winter Star Party 2015)</a></h4>
+          <p class="meta">Shami Chatterjee &middot; Kopernik Observatory</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="VjgPkds1UIo" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/VjgPkds1UIo/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=VjgPkds1UIo" target="_blank" rel="noopener">Exploring the Cosmos</a></h4>
+          <p class="meta">Shami Chatterjee</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="p_EqX6R6Crk" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/p_EqX6R6Crk/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=p_EqX6R6Crk" target="_blank" rel="noopener">Building a Galaxy-Size Detector</a></h4>
+          <p class="meta">Shami Chatterjee &middot; California Academy of Sciences</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="taeABpFjjQg" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/taeABpFjjQg/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=taeABpFjjQg" target="_blank" rel="noopener">Building a Galaxy-Scale Gravitational Wave Detector</a></h4>
+          <p class="meta">Shami Chatterjee &middot; Talks at Google</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="zV6DL-EHSUQ" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/zV6DL-EHSUQ/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=zV6DL-EHSUQ" target="_blank" rel="noopener">Spring 2024 Lecture Series &mdash; The Voyager Spacecraft: What Are We Learning Now?</a></h4>
+          <p class="meta">Cornell Astronomical Society @ Fuertes Observatory</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="VXQBJL7IR6I" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/VXQBJL7IR6I/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=VXQBJL7IR6I" target="_blank" rel="noopener">Science of Cosmos: The Man of a Trillion Worlds</a></h4>
+          <p class="meta">Carl Sagan Institute</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="fPEewlxpD_c" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/fPEewlxpD_c/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=fPEewlxpD_c" target="_blank" rel="noopener">The Astrophysics of Fast Radio Bursts (Feb 5, 2020)</a></h4>
+          <p class="meta">James M. Cordes &middot; Simons Foundation</p>
+        </div>
+      </div>
+      <div class="video-card" data-video-id="eml6lBrVMK8" data-embeddable="true">
+        <div class="video-frame" style="background-image:url('https://i.ytimg.com/vi/eml6lBrVMK8/hqdefault.jpg')">
+          <button class="video-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <div class="video-meta">
+          <h4><a class="video-title-link" href="https://www.youtube.com/watch?v=eml6lBrVMK8" target="_blank" rel="noopener">Ben Jacobson-Bell (BTL, Berkeley) &mdash; Breakthrough Observations of 3I/ATLAS</a></h4>
+          <p class="meta">B. Jacobson-Bell &middot; Green Bank Observatory</p>
+        </div>
+      </div>
+    </div>
+    <!-- VIDEOS:GRID:END -->
+  </section>
+
+  <section class="wrap" id="blog" style="padding-top:0;">
+    <div class="section-head" data-observe>
+      <p class="eyebrow">From the group</p>
+      <h2>Blog corner</h2>
+      <p class="lede">Shorter, informal notes from the group &mdash; new results, conference trips, telescope-time stories. Nothing&rsquo;s posted yet; this corner is ready for when there is.</p>
+    </div>
+    <div class="blog-empty card" data-observe>
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="4" width="20" height="24" rx="1.5"></rect><path d="M11 11h10M11 16h10M11 21h6" stroke-linecap="round"></path></svg>
+      <div>
+        <h3>First post coming soon</h3>
+        <p>When the group has something worth writing up, it&rsquo;ll appear here first.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-grid">
+      <div>
+        <h4>Cornell Extreme Astrophysics</h4>
+        <p style="color:var(--text-dim); font-size:13.5px; line-height:1.8; max-width:34ch;">5th floor, Department of Astronomy, Cornell University<br>404 Space Sciences Building<br>Ithaca, NY 14853<br>United States</p>
+      </div>
+      <div>
+       <h4>Affiliated with</h4>
+        <div class="aff-logos">
+          <span class="aff-logo"><img src="logos/ipta.png" alt="International Pulsar Timing Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">IPTA</span></span>
+          <span class="aff-logo"><img src="logos/nanograv.png" alt="NANOGrav" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">NANOGrav</span></span>
+          <span class="aff-logo"><img src="logos/dsa.png" alt="Deep Synoptic Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">DSA</span></span>
+          <span class="aff-logo"><img src="logos/cornell.png" alt="Cornell University" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; opacity:1.0;"> <span class="aff-logo-fallback">Cornell</span></span>
+        </div>
+      </div>
+      <div>
+        <h4>Affiliations</h4>
+        <p>NANOGrav Physics Frontiers Center</p>
+        <p>International Pulsar Timing Array</p>
+        <p>Cornell Center for Astrophysics &amp; Planetary Science</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="signal-strip">
+  <div class="wrap">
+    <span class="specimen">PSR J0437&minus;4715 &middot; P 5.76&nbsp;ms &middot; DM 2.64&nbsp;pc&nbsp;cm&#8315;&sup3; <span class="dot">&middot;</span> PSR J1909&minus;3744 &middot; P 2.95&nbsp;ms &middot; DM 10.39&nbsp;pc&nbsp;cm&#8315;&sup3;</span>
+    <span class="clock" data-utc-clock>00:00:00 UTC</span>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

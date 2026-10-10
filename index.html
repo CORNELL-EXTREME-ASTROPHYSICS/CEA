@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{if(localStorage.getItem('ceag-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+<title>Cornell Extreme Astrophysics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(30px,5vw,70px);
+    align-items: center;
+  }
+  @media (max-width: 940px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+  .hd-card{ padding: 22px 22px 16px; }
+  .hd-card .hd-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .hd-card h3{ font-size:14px; color:var(--starlight-dim); font-family:var(--font-mono); font-weight:500; letter-spacing:0.03em; }
+  .hd-card .hd-note{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); }
+  .hd-caption{ margin-top:10px; font-size:12.5px; color:var(--text-dim); line-height:1.6; border-top:1px solid var(--line); padding-top:12px; }
+
+  .updates-card{ padding: 18px 22px 20px; }
+  .updates-dot{ color: var(--signal); animation: updates-pulse 2.4s ease-in-out infinite; }
+  @keyframes updates-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
+  @media (prefers-reduced-motion: reduce){ .updates-dot{ animation:none; } }
+  .updates-viewport{ height: 72px; overflow:hidden; position:relative; margin-top:4px; }
+  .updates-list{ position:relative; }
+  .updates-list li{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:4px;
+    opacity:0; transform: translateY(8px);
+    transition: opacity .5s ease, transform .5s ease;
+    pointer-events:none;
+  }
+  .updates-list li.active{ opacity:1; transform: translateY(0); pointer-events:auto; }
+  .updates-list .u-what{ font-size:13.6px; color:var(--starlight); line-height:1.4; }
+  .updates-list .u-when{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; }
+
+  .highlight-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    overflow:hidden;
+  }
+  .highlight-grid > a{
+    background: var(--void-deep);
+    padding: 32px 26px;
+    display:flex; flex-direction:column; gap:14px;
+    transition: background .2s ease;
+    min-height: 220px;
+  }
+  .highlight-grid > a:hover{ background: var(--panel); }
+  .highlight-grid .ico{ width:32px; height:32px; color: var(--signal); }
+  .highlight-grid h3{ font-size:18px; color:var(--starlight); line-height:1.25; }
+  .highlight-grid p{ font-size:13.6px; color:var(--text-dim); line-height:1.6; flex:1; }
+  .highlight-grid .go{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-faint); }
+  @media (max-width: 780px){ .highlight-grid{ grid-template-columns: 1fr; } }
+
+  .facilities{
+    display:flex; flex-wrap:wrap; gap: 10px 34px;
+    justify-content: space-between;
+    padding-block: 26px;
+  }
+  .facilities .f-item{ display:flex; align-items:center; gap:10px; color:var(--text-dim); font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.03em; }
+  .facilities .f-item svg{ width:18px; height:18px; color: var(--signal-dim); flex:none; }
+
+  .stats-band{
+    display:grid; grid-template-columns: repeat(4,1fr); gap: 28px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding-block: 34px;
+  }
+  @media (max-width:720px){ .stats-band{ grid-template-columns:1fr 1fr; row-gap:26px; } }
+
+  .cta-panel{
+    border:1px solid var(--line); border-radius: var(--radius-m);
+    padding: clamp(30px,5vw,52px);
+    display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+    background: linear-gradient(135deg, rgba(179,58,46,0.06), transparent 60%), var(--panel);
+  }
+  .cta-panel h3{ font-size: clamp(22px,2.6vw,30px); max-width:20ch; }
+</style>
+</head>
+<body data-page="home">
+<div id="bgfield"></div>
+<canvas id="stars"></canvas>
+<div class="nebula n1"></div>
+<div class="nebula n2"></div>
+<div class="nebula n3"></div>
+
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--signal)">
+        <ellipse cx="15" cy="18" rx="11" ry="4.4" transform="rotate(-16 15 18)" opacity="0.55"></ellipse>
+        <circle cx="24.6" cy="14.2" r="1.4" fill="currentColor" stroke="none"></circle>
+        <path d="M6 24 A11 11 0 0 1 24 17" stroke-linecap="round"></path>
+        <path d="M15 21 L15 13 M11.5 15.5 L15 13 L18.5 15.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+      </svg>
+      <span class="brand-text">
+        <span class="full">Cornell Extreme Astrophysics</span>
+        <span class="sub">Radio Astronomy Group</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="team.html" data-nav="team">Team</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="outreach.html" data-nav="outreach">Outreach</a></li>
+      <li><a href="contact.html" data-nav="contact">Contact</a></li>
+    </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.1 5.9l-1.5 1.5M7.4 16.6l-1.5 1.5M18.1 18.1l-1.5-1.5M7.4 7.4 5.9 5.9" stroke-linecap="round"></path></svg>
+        </button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+    </button>
+      </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Department of Astronomy &middot; Cornell University</p>
+        <h1>Listening for the <em class="accent-em">extreme</em> universe.</h1>
+        <p class="dek">We study the most energetic phenomena in the cosmos &mdash; merging supermassive black holes, ultra-dense pulsars, and millisecond flashes from across the universe &mdash; using the largest radio telescopes on Earth as our instruments.</p>
+        <div style="display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;">
+          <a href="research.html" class="btn">Explore the research</a>
+          <a href="team.html" class="btn ghost">Meet the team</a>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div class="card hd-card" data-observe>
+          <div class="hd-head">
+            <h3>Hellings&ndash;Downs correlation</h3>
+            <span class="hd-note">&gamma;(&theta;)</span>
+          </div>
+          <svg viewBox="0 0 640 300" role="img" aria-label="Chart of the Hellings-Downs curve, showing predicted timing correlation between pulsar pairs as a function of their angular separation on the sky, dipping negative near 80 degrees and rising again toward 180 degrees">
+            <line x1="50" y1="264" x2="620" y2="264" stroke="var(--line-strong)" stroke-width="1"></line>
+            <line x1="50" y1="20" x2="50" y2="264" stroke="var(--line-strong)" stroke-width="1"></line>
+            <line x1="50" y1="198.9" x2="620" y2="198.9" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 4"></line>
+
+            <g font-family="IBM Plex Mono" font-size="10.5" fill="var(--text-faint)">
+              <text x="50" y="280" text-anchor="middle">0&deg;</text>
+              <text x="192.5" y="280" text-anchor="middle">45&deg;</text>
+              <text x="335" y="280" text-anchor="middle">90&deg;</text>
+              <text x="477.5" y="280" text-anchor="middle">135&deg;</text>
+              <text x="620" y="280" text-anchor="middle">180&deg;</text>
+              <text x="42" y="40" text-anchor="end">0.5</text>
+              <text x="42" y="202.9" text-anchor="end">0</text>
+              <text x="42" y="261" text-anchor="end">&minus;0.15</text>
+            </g>
+
+            <polyline class="pen-draw" points="59.5,38.8 81.7,55.0 113.3,90.2 145.0,130.1 176.7,168.3 208.3,200.9 240.0,225.7 271.7,241.5 303.3,248.1 335.0,246.1 366.7,236.6 398.3,221.5 430.0,202.6 461.7,181.9 493.3,161.7 525.0,143.7 556.7,129.6 588.3,120.7 620.0,117.6"
+              fill="none" stroke="var(--signal)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+            <circle cx="59.5" cy="38.8" r="3" fill="var(--signal)"></circle>
+            <circle cx="303.3" cy="248.1" r="3" fill="var(--signal)"></circle>
+            <circle cx="620" cy="117.6" r="3" fill="var(--signal)"></circle>
+
+            <text x="335" y="299" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--text-faint)">ANGULAR SEPARATION BETWEEN PULSAR PAIRS</text>
+          </svg>
+          <p class="hd-caption">The angular signature a gravitational-wave background imprints on timing residuals across a pulsar timing array &mdash; first predicted by Hellings &amp; Downs in 1983, and the pattern NANOGrav reported evidence for in 2023.</p>
+        </div>
+
+        <div class="card updates-card" data-observe>
+          <div class="hd-head">
+            <h3>Recent updates</h3>
+            <span class="hd-note updates-dot" aria-hidden="true">&#9679;</span>
+          </div>
+          <!-- Placeholder feed — replace items in the UPDATES array
+               (script.js, "updatesTicker" module) with real group news. -->
+          <div class="updates-viewport">
+            <ul class="updates-list" id="updates-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0;">
+    <div class="facilities" data-observe>
+      <div class="f-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20 A9 9 0 0 1 21 16" stroke-linecap="round"/><circle cx="18" cy="6" r="1.4" fill="currentColor" stroke="none"/><path d="M12 18 L12 9 M9 11 L12 9 L15 11" stroke-linecap="round" stroke-linejoin="round"/></svg> Green Bank Telescope</div>
+      <div class="f-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4v16"/></svg> CHIME</div>
+      <div class="f-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5v14M9 5v14M14 5v14M19 5v14" stroke-linecap="round"/></svg> Very Large Array</div>
+      <div class="f-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="18" r="2"/><circle cx="14" cy="9" r="2"/><circle cx="19" cy="16" r="2"/><path d="M8 17l4.5-6.5M15.5 10.5l2 3.5" stroke-linecap="round"/></svg> Deep Synoptic Array</div>
+      <div class="f-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20 A9 9 0 0 1 21 16" stroke-linecap="round" opacity="0.5"/><path d="M3 20 L21 16" stroke-dasharray="1 3" opacity="0.5"/></svg> Arecibo Observatory <span class="mono" style="color:var(--text-faint); font-size:10px;">(1963&ndash;2020)</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head" data-observe>
+      <p class="eyebrow">What we study</p>
+      <h2>Four windows on the extreme universe</h2>
+      <p class="lede">From nanohertz gravitational waves to millisecond radio flashes, our group turns radio telescopes into some of the most sensitive instruments in physics.</p>
+    </div>
+    <div class="highlight-grid" data-observe>
+      <a href="research.html#gravitational-waves">
+        <svg class="ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 16c2-7 6-10 12-10s10 3 12 10c-2 7-6 10-12 10S6 23 4 16Z"/><circle cx="16" cy="16" r="2.6" fill="currentColor" stroke="none"/></svg>
+        <h3>Gravitational Waves &amp; PTAs</h3>
+        <p>Timing an array of millisecond pulsars to hunt for nanohertz gravitational waves from supermassive black hole binaries.</p>
+        <span class="go">Read more &rarr;</span>
+      </a>
+      <a href="research.html#frb">
+        <svg class="ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M8 8l4 4M20 20l4 4M24 8l-4 4M12 20l-4 4" stroke-linecap="round"/><circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/></svg>
+        <h3>Fast Radio Bursts</h3>
+        <p>Localizing millisecond-duration flashes from distant galaxies to trace the universe&rsquo;s missing baryons and magnetized plasma.</p>
+        <span class="go">Read more &rarr;</span>
+      </a>
+      <a href="research.html#instrumentation">
+        <svg class="ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 26 A13 13 0 0 1 28 20" stroke-linecap="round"/><path d="M16 23 L16 10 M11 14 L16 10 L21 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Radio Instrumentation</h3>
+        <p>Building the backends, arrays, and survey pipelines &mdash; from Arecibo&rsquo;s legacy to the Deep Synoptic Array &mdash; that make these detections possible.</p>
+        <span class="go">Read more &rarr;</span>
+      </a>
+    </div>
+    <p style="margin-top:18px; font-size:12.5px; color:var(--text-faint);">A smaller thread of the group, pursued through Cornell&rsquo;s Carl Sagan Institute, touches on exoplanet habitability &mdash; see <a href="research.html#exoplanets" class="text-link">Research</a>.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="stats-band" data-observe>
+      <div class="stat"><span class="n">1983</span><span class="l">Hellings&ndash;Downs prediction</span></div>
+      <div class="stat"><span class="n">70+</span><span class="l">Pulsars in the NANOGrav 15&#8209;yr dataset</span></div>
+      <div class="stat"><span class="n">15 yr</span><span class="l">Of timing baseline behind the 2023 result</span></div>
+      <div class="stat"><span class="n">2&times;</span><span class="l">Nature covers for FRB&nbsp;121102</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cta-panel" data-observe>
+      <h3>Curious what a night of pulsar timing actually looks like?</h3>
+      <a href="outreach.html" class="btn">Visit outreach &amp; public talks</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-grid">
+      <div>
+        <h4>Cornell Extreme Astrophysics</h4>
+        <p style="color:var(--text-dim); font-size:13.5px; line-height:1.8; max-width:34ch;">5th floor, Department of Astronomy, Cornell University<br>404 Space Sciences Building<br>Ithaca, NY 14853<br>United States</p>
+      </div>
+      <div>
+        <h4>Affiliated with</h4>
+        <div class="aff-logos">
+          <span class="aff-logo"><img src="logos/ipta.png" alt="International Pulsar Timing Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">IPTA</span></span>
+          <span class="aff-logo"><img src="logos/nanograv.png" alt="NANOGrav" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">NANOGrav</span></span>
+          <span class="aff-logo"><img src="logos/dsa.png" alt="Deep Synoptic Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">DSA</span></span>
+          <span class="aff-logo"><img src="logos/cornell.png" alt="Cornell University" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; opacity:1.0;"> <span class="aff-logo-fallback">Cornell</span></span>  
+        </div>
+      </div>
+      <div>
+        <h4>Affiliations</h4>
+        <p>NANOGrav Physics Frontiers Center</p>
+        <p>International Pulsar Timing Array</p>
+        <p>Cornell Center for Astrophysics & Planetary Science</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="signal-strip">
+  <div class="wrap">
+    <span class="specimen">PSR J0437&minus;4715 &middot; P 5.76&nbsp;ms &middot; DM 2.64&nbsp;pc&nbsp;cm&#8315;&sup3; <span class="dot">&middot;</span> PSR J1909&minus;3744 &middot; P 2.95&nbsp;ms &middot; DM 10.39&nbsp;pc&nbsp;cm&#8315;&sup3;</span>
+    <span class="clock" data-utc-clock>00:00:00 UTC</span>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

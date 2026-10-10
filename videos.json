@@ -1,0 +1,136 @@
+{
+  "generated": "2026-09-23",
+  "source": "Fetched from YouTube's public oEmbed endpoint by update_videos.py. \"choice\" is the one field that's human-set, from talks.yaml.",
+  "items": [
+    {
+      "id": "R_vcczQrKaM",
+      "url": "https://www.youtube.com/watch?v=R_vcczQrKaM",
+      "title": "Eavesdropping on our (Intergalactic) Neighbors with Pulsar Timing Arrays | Spring '26 Lecture Series",
+      "channel": "Cornell Astronomical Society @ Fuertes Observatory",
+      "speaker": "Lydia Guertin",
+      "thumbnail": "https://i.ytimg.com/vi/R_vcczQrKaM/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "nzSvlPPr3pk",
+      "url": "https://www.youtube.com/watch?v=nzSvlPPr3pk",
+      "title": "The Astrophysics of Fast Radio Bursts - Jim Cordes",
+      "channel": "Flatiron Institute",
+      "speaker": "James M. Cordes",
+      "thumbnail": "https://i.ytimg.com/vi/nzSvlPPr3pk/hqdefault.jpg",
+      "embeddable": true,
+      "choice": "featured"
+    },
+    {
+      "id": "oAAdmqHJV8g",
+      "url": "https://www.youtube.com/watch?v=oAAdmqHJV8g",
+      "title": "Fast Radio Bursts: Probes and Puzzles from Nanosecond to Gigaparsecs - Jim Cordes - Cornell",
+      "channel": null,
+      "speaker": "James M. Cordes",
+      "thumbnail": "https://i.ytimg.com/vi/oAAdmqHJV8g/hqdefault.jpg",
+      "embeddable": false,
+      "choice": null
+    },
+    {
+      "id": "RfbP4Xw1_NM",
+      "url": "https://www.youtube.com/watch?v=RfbP4Xw1_NM",
+      "title": "Jim Cordes - Gravitational Waves are The New Window on the Universe 10.16.25",
+      "channel": "Cornell CAPE",
+      "speaker": "James M. Cordes",
+      "thumbnail": "https://i.ytimg.com/vi/RfbP4Xw1_NM/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "FonXhgeCScc",
+      "url": "https://www.youtube.com/watch?v=FonXhgeCScc",
+      "title": "Are We Alone? by Shami Chatterjee, Cornell University (Winter Star Party 2015)",
+      "channel": "Kopernik Observatory",
+      "speaker": "Shami Chatterjee",
+      "thumbnail": "https://i.ytimg.com/vi/FonXhgeCScc/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "VjgPkds1UIo",
+      "url": "https://www.youtube.com/watch?v=VjgPkds1UIo",
+      "title": "Exploring The Cosmos - Shami Chatterjee",
+      "channel": "Indian Genes",
+      "speaker": "Shami Chatterjee",
+      "thumbnail": "https://i.ytimg.com/vi/VjgPkds1UIo/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "p_EqX6R6Crk",
+      "url": "https://www.youtube.com/watch?v=p_EqX6R6Crk",
+      "title": "Shami Chatterjee on Building a Galaxy-Size Detector | California Academy of Sciences",
+      "channel": "California Academy of Sciences",
+      "speaker": "Shami Chatterjee",
+      "thumbnail": "https://i.ytimg.com/vi/p_EqX6R6Crk/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "taeABpFjjQg",
+      "url": "https://www.youtube.com/watch?v=taeABpFjjQg",
+      "title": "Building a Galaxy-Scale Gravitational Wave Detector | Dr. Shami Chatterjee | Talks at Google",
+      "channel": "Talks at Google",
+      "speaker": "Shami Chatterjee",
+      "thumbnail": "https://i.ytimg.com/vi/taeABpFjjQg/hqdefault.jpg",
+      "embeddable": true,
+      "choice": "featured"
+    },
+    {
+      "id": "zV6DL-EHSUQ",
+      "url": "https://www.youtube.com/watch?v=zV6DL-EHSUQ",
+      "title": "Spring 2024 Lecture Series - The Voyager Spacecraft: What Are We Learning Now?",
+      "channel": "Cornell Astronomical Society @ Fuertes Observatory",
+      "speaker": "James M. Cordes",
+      "thumbnail": "https://i.ytimg.com/vi/zV6DL-EHSUQ/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "VXQBJL7IR6I",
+      "url": "https://www.youtube.com/watch?v=VXQBJL7IR6I",
+      "title": "Science of Cosmos: The Man of a Trillion Worlds",
+      "channel": "Carl Sagan Institute",
+      "speaker": "James M. Cordes",
+      "thumbnail": "https://i.ytimg.com/vi/VXQBJL7IR6I/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "fPEewlxpD_c",
+      "url": "https://www.youtube.com/watch?v=fPEewlxpD_c",
+      "title": "The Astrophysics of Fast Radio Bursts - Jim Cordes (February 5, 2020)",
+      "channel": "Simons Foundation",
+      "speaker": "James M. Cordes",
+      "thumbnail": "https://i.ytimg.com/vi/fPEewlxpD_c/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "eml6lBrVMK8",
+      "url": "https://www.youtube.com/watch?v=eml6lBrVMK8",
+      "title": "2026.03.11 - Ben Jacobson-Bell (BTL, Berkeley) - Breakthrough Observations of 3I/ATLAS",
+      "channel": "Green Bank Observatory",
+      "speaker": "B. Jacobson-Bell",
+      "thumbnail": "https://i.ytimg.com/vi/eml6lBrVMK8/hqdefault.jpg",
+      "embeddable": true,
+      "choice": null
+    },
+    {
+      "id": "Ff0b8hrM4G0",
+      "url": "https://www.youtube.com/watch?v=Ff0b8hrM4G0",
+      "title": "Gravitational waves and why you exist | Lydia Guertin | TEDxHaverford College",
+      "channel": "TEDx Talks",
+      "speaker": "Lydia Guertin",
+      "thumbnail": "https://i.ytimg.com/vi/Ff0b8hrM4G0/hqdefault.jpg",
+      "embeddable": true,
+      "choice": "featured"
+    }    
+  ]
+}

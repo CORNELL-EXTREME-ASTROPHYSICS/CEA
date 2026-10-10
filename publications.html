@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{if(localStorage.getItem('ceag-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+<title>Publications &mdash; Cornell Extreme Astrophysics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .filter-row{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:36px; }
+  .filter-row button{
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;
+    background:transparent; border:1px solid var(--line-strong); color:var(--text-dim);
+    padding:9px 16px; border-radius:20px; cursor:pointer; transition: all .15s ease;
+  }
+  .filter-row button:hover{ color:var(--starlight); border-color:var(--starlight-dim); }
+  .filter-row button.on{ color:var(--void-deep); background:var(--signal); border-color:var(--signal); }
+
+  .pub-list{ display:flex; flex-direction:column; }
+  .pub{
+    display:grid; grid-template-columns: 90px 1fr; gap:22px;
+    padding: 26px 0; border-bottom:1px solid var(--line);
+  }
+  .pub:first-child{ border-top:1px solid var(--line); }
+  .pub .year{ font-family:var(--font-mono); font-size:14px; color:var(--signal-dim); padding-top:2px; }
+  .pub h3{ font-size:16.5px; font-weight:500; line-height:1.4; }
+  .pub h3 a{ color:var(--starlight); }
+  .pub h3 a:hover{ color:var(--signal); }
+  .pub .meta{ margin-top:8px; font-size:13px; color:var(--text-dim); line-height:1.6; }
+  .pub .authors{ font-style:italic; color:var(--text-faint); }
+  .pub .tags{ display:flex; gap:8px; margin-top:12px; }
+  @media (max-width:620px){ .pub{ grid-template-columns:1fr; gap:8px; } }
+
+  .placeholder-note{
+    display:flex; gap:14px; align-items:flex-start; padding:20px 22px;
+    border:1px dashed var(--line-strong); border-radius:var(--radius-m);
+    margin-bottom: 40px; color:var(--text-dim); font-size:13px; line-height:1.6;
+  }
+  .placeholder-note svg{ width:20px; height:20px; flex:none; color:var(--signal-dim); margin-top:1px; }
+</style>
+</head>
+<body data-page="publications">
+<div id="bgfield"></div>
+<canvas id="stars"></canvas>
+<div class="nebula n1"></div>
+<div class="nebula n2"></div>
+<div class="nebula n3"></div>
+
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--signal)">
+        <ellipse cx="15" cy="18" rx="11" ry="4.4" transform="rotate(-16 15 18)" opacity="0.55"></ellipse>
+        <circle cx="24.6" cy="14.2" r="1.4" fill="currentColor" stroke="none"></circle>
+        <path d="M6 24 A11 11 0 0 1 24 17" stroke-linecap="round"></path>
+        <path d="M15 21 L15 13 M11.5 15.5 L15 13 L18.5 15.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+      </svg>
+      <span class="brand-text">
+        <span class="full">Cornell Extreme Astrophysics</span>
+        <span class="sub">Department of Astronomy</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="team.html" data-nav="team">Team</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="publications.html" data-nav="publications">Publications</a></li>
+      <li><a href="talks.html" data-nav="talks">Talks</a></li>
+      <li><a href="outreach.html" data-nav="outreach">Outreach</a></li>
+      <li><a href="contact.html" data-nav="contact">Contact</a></li>
+    </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.1 5.9l-1.5 1.5M7.4 16.6l-1.5 1.5M18.1 18.1l-1.5-1.5M7.4 7.4 5.9 5.9" stroke-linecap="round"></path></svg>
+        </button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+    </button>
+      </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <p class="eyebrow">Publications</p>
+      <h1 style="font-size:clamp(34px,5vw,58px); max-width:16ch;">The bibliography, by theme.</h1>
+      <p class="dek">Filter by research area. A curated set of the group&rsquo;s real papers, pulled from NASA ADS and arXiv &mdash; not the complete record.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="placeholder-note" data-observe>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4M12 16.5v.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+      <span>These are real papers by the group&rsquo;s two PIs, verified against NASA ADS and arXiv &mdash; a curated subset, not the full bibliography. For the complete, always-current record, see each PI&rsquo;s ADS author page: <a class="text-link" href="https://ui.adsabs.harvard.edu/search/filter_author_facet_hier_fq_author=AND&amp;filter_author_facet_hier_fq_author=author_facet_hier%3A%221%2FCordes%2C%20J%2FCordes%2C%20James%20M%22&amp;fq=%7B!type%3Daqp%20v%3D%24fq_author%7D&amp;fq_author=(author_facet_hier%3A%221%2FCordes%2C%20J%2FCordes%2C%20James%20M%22)&amp;q=%20author%3A%22james%20cordes%22&amp;sort=date%20desc%2C%20bibcode%20desc" target="_blank" rel="noopener">Cordes</a> &middot; <a class="text-link" href="https://ui.adsabs.harvard.edu/search/filter_author_facet_hier_fq_author=AND&amp;filter_author_facet_hier_fq_author=author_facet_hier%3A%221%2FChatterjee%2C%20S%2FChatterjee%2C%20Shami%22&amp;fq=%7B!type%3Daqp%20v%3D%24fq_author%7D&amp;fq_author=(author_facet_hier%3A%221%2FChatterjee%2C%20S%2FChatterjee%2C%20Shami%22)&amp;q=%20author%3A%22shami%20chatterjee%22&amp;sort=date%20desc%2C%20bibcode%20desc" target="_blank" rel="noopener">Chatterjee</a>. Run <code class="mono">update_publications.py</code> (included in this download) with a free ADS API token to regenerate this list automatically &mdash; no exoplanet papers are listed below because neither PI has a first- or co-authored exoplanet paper on ADS yet.</span>
+    </div>
+
+    <div class="filter-row" data-observe>
+      <button class="on" data-filter="all">All</button>
+      <button data-filter="gw">Gravitational Waves</button>
+      <button data-filter="frb">Fast Radio Bursts</button>
+      <button data-filter="instr">Instrumentation</button>
+    </div>
+
+    <!-- PUBLICATIONS:START — run update_publications.py to regenerate this
+         block from NASA ADS. Hand edits here are fine but get overwritten
+         the next time the script runs. -->
+    <div class="pub-list" data-observe>
+      <div class="pub" data-tags="gw instr">
+        <div class="year">2024</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22A%20Cyclic%20Spectroscopy%20Scintillation%20Study%20of%20PSR%20B1937%2B21%22&amp;sort=date%20desc" target="_blank" rel="noopener">A Cyclic Spectroscopy Scintillation Study of PSR B1937+21 I. Demonstration of Improved Scintillometry</a></h3>
+          <div class="meta authors">J. E. Turner, T. Dolch, J. M. Cordes, S. K. Ocker, D. R. Stinebring, S. Chatterjee, et al.</div>
+          <div class="meta">arXiv preprint (venue unconfirmed) &middot; 2024</div>
+          <div class="tags"><span class="tag on">Gravitational Waves</span><span class="tag on">Instrumentation</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="gw">
+        <div class="year">2023</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20NANOGrav%2015%20yr%20Data%20Set%3A%20Evidence%20for%20a%20Gravitational-Wave%20Background%22&amp;sort=date%20desc" target="_blank" rel="noopener">The NANOGrav 15 yr Data Set: Evidence for a Gravitational-Wave Background</a></h3>
+          <div class="meta authors">G. Agazie et al. &mdash; NANOGrav Collaboration, incl. J. M. Cordes &amp; S. Chatterjee</div>
+          <div class="meta">The Astrophysical Journal Letters &middot; 2023</div>
+          <div class="tags"><span class="tag on">Gravitational Waves</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="gw instr">
+        <div class="year">2023</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20NANOGrav%2015-year%20Data%20Set%3A%20Observations%20and%20Timing%20of%2068%20Millisecond%20Pulsars%22&amp;sort=date%20desc" target="_blank" rel="noopener">The NANOGrav 15-year Data Set: Observations and Timing of 68 Millisecond Pulsars</a></h3>
+          <div class="meta authors">G. Agazie et al. &mdash; NANOGrav Collaboration, incl. J. M. Cordes &amp; S. Chatterjee</div>
+          <div class="meta">The Astrophysical Journal Letters &middot; 2023</div>
+          <div class="tags"><span class="tag on">Gravitational Waves</span><span class="tag on">Instrumentation</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="gw">
+        <div class="year">2020</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20NANOGrav%2012.5-year%20Data%20Set%3A%20Search%20For%20An%20Isotropic%20Stochastic%20Gravitational-Wave%20Background%22&amp;sort=date%20desc" target="_blank" rel="noopener">The NANOGrav 12.5-year Data Set: Search For An Isotropic Stochastic Gravitational-Wave Background</a></h3>
+          <div class="meta authors">Z. Arzoumanian et al. &mdash; NANOGrav Collaboration, incl. J. M. Cordes &amp; S. Chatterjee</div>
+          <div class="meta">The Astrophysical Journal Letters &middot; 2020</div>
+          <div class="tags"><span class="tag on">Gravitational Waves</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="frb">
+        <div class="year">2019</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22Fast%20Radio%20Bursts%3A%20An%20Extragalactic%20Enigma%22&amp;sort=date%20desc" target="_blank" rel="noopener">Fast Radio Bursts: An Extragalactic Enigma</a></h3>
+          <div class="meta authors">J. M. Cordes &amp; S. Chatterjee</div>
+          <div class="meta">Annual Review of Astronomy and Astrophysics &middot; 2019 &middot; review</div>
+          <div class="tags"><span class="tag on">Fast Radio Bursts</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="instr">
+        <div class="year">2019</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22Twelve%20Decades%3A%20Probing%20the%20Interstellar%20Medium%20from%20kiloparsec%20to%20sub-AU%20scales%22&amp;sort=date%20desc" target="_blank" rel="noopener">Twelve Decades: Probing the Interstellar Medium from kiloparsec to sub-AU scales</a></h3>
+          <div class="meta authors">D. Stinebring, S. Chatterjee, S. E. Clark, J. M. Cordes, et al.</div>
+          <div class="meta">Astro2020 Decadal Survey science white paper &middot; 2019</div>
+          <div class="tags"><span class="tag on">Instrumentation</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="frb">
+        <div class="year">2017</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20direct%20localization%20of%20a%20fast%20radio%20burst%20and%20its%20host%22&amp;sort=date%20desc" target="_blank" rel="noopener">The direct localization of a fast radio burst and its host</a></h3>
+          <div class="meta authors">S. Chatterjee, C. J. Law, R. S. Wharton, et al.</div>
+          <div class="meta">Nature &middot; 2017 &middot; first FRB localization</div>
+          <div class="tags"><span class="tag on">Fast Radio Bursts</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="frb">
+        <div class="year">2017</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20Host%20Galaxy%20and%20Redshift%20of%20the%20Repeating%20Fast%20Radio%20Burst%20FRB%20121102%22&amp;sort=date%20desc" target="_blank" rel="noopener">The Host Galaxy and Redshift of the Repeating Fast Radio Burst FRB 121102</a></h3>
+          <div class="meta authors">S. P. Tendulkar, C. G. Bassa, J. M. Cordes, et al.</div>
+          <div class="meta">The Astrophysical Journal Letters &middot; 2017</div>
+          <div class="tags"><span class="tag on">Fast Radio Bursts</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="gw instr">
+        <div class="year">2017</div>
+        <div>
+          <h3><a href="https://ui.adsabs.harvard.edu/search/q=title%3A%22A%20Second%20Chromatic%20Timing%20Event%20of%20Interstellar%20Origin%20toward%20PSR%20J1713%2B0747%22&amp;sort=date%20desc" target="_blank" rel="noopener">A Second Chromatic Timing Event of Interstellar Origin toward PSR J1713+0747</a></h3>
+          <div class="meta authors">M. T. Lam, J. A. Ellis, G. Grillo, et al., incl. S. Chatterjee &amp; J. M. Cordes</div>
+          <div class="meta">The Astrophysical Journal Letters &middot; 2017</div>
+          <div class="tags"><span class="tag on">Gravitational Waves</span><span class="tag on">Instrumentation</span></div>
+        </div>
+      </div>
+      <div class="pub" data-tags="instr">
+        <div class="year">2002</div>
+        <div>
+          <h3><a href="https://arxiv.org/abs/astro-ph/0207156" target="_blank" rel="noopener">NE2001.I. A New Model for the Galactic Distribution of Free Electrons and its Fluctuations</a></h3>
+          <div class="meta authors">J. M. Cordes &amp; T. J. W. Lazio</div>
+          <div class="meta">arXiv:astro-ph/0207156 &middot; 2002 &middot; the group&rsquo;s widely-used Galactic electron-density model</div>
+          <div class="tags"><span class="tag on">Instrumentation</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- PUBLICATIONS:END -->
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-grid">
+      <div>
+        <h4>Cornell Extreme Astrophysics</h4>
+        <p style="color:var(--text-dim); font-size:13.5px; line-height:1.8; max-width:34ch;">Department of Astronomy, Cornell University. Radio astronomy, pulsar timing arrays, and fast radio bursts.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="about.html">About</a><br>
+        <a href="team.html">Team</a><br>
+        <a href="research.html">Research</a><br>
+        <a href="publications.html">Publications</a><br>
+        <a href="talks.html">Talks</a><br>
+        <a href="outreach.html">Outreach</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Affiliations</h4>
+        <p>NANOGrav Physics Frontiers Center</p>
+        <p>International Pulsar Timing Array</p>
+        <p>Cornell Center for Astrophysics &amp; Planetary Science</p>
+      </div>
+    </div>
+  </div>
+  <div class="signal-strip">
+    <div class="wrap">
+      <span class="specimen">PSR J0437&minus;4715 &middot; P 5.76&nbsp;ms &middot; DM 2.64&nbsp;pc&nbsp;cm&#8315;&sup3; <span class="dot">&middot;</span> PSR J1909&minus;3744 &middot; P 2.95&nbsp;ms &middot; DM 10.39&nbsp;pc&nbsp;cm&#8315;&sup3;</span>
+      <span class="clock" data-utc-clock>00:00:00 UTC</span>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

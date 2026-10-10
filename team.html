@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{if(localStorage.getItem('ceag-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+<title>Team &mdash; Cornell Extreme Astrophysics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .pi-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width:860px){ .pi-grid{ grid-template-columns:1fr; } }
+
+  
+  .pi-card{ padding: 0; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .pi-top{ display:flex; flex-direction:column; align-items:center; gap:16px; padding: 34px 26px 0; }
+  .avatar{ width:clamp(150px, 24vw, 300px); height:clamp(150px, 24vw, 300px); flex:none; border:1px solid var(--line-strong); border-radius:var(--radius-s); overflow:hidden; background:var(--void-deep); }
+  .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .pi-name{ font-size:19px; color:var(--starlight); }
+  .pi-title{ font-family:var(--font-mono); font-size:11.5px; color:var(--signal); letter-spacing:0.03em; margin-top:5px; }
+  .pi-sub{ font-size:12.5px; color:var(--text-faint); margin-top:3px; }
+  .pi-bio{ padding: 18px 26px 24px; font-size:13.8px; color:var(--text-dim); line-height:1.7; text-align:justify; max-width:52ch; }
+  .pi-foot{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; padding: 0 26px 24px; }
+
+  .student-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
+  @media (max-width:900px){ .student-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width:560px){ .student-grid{ grid-template-columns: 1fr; } }
+  .s-card{ padding:22px; display:flex; flex-direction:column; gap:14px; }
+  .s-avatar{ width:100%; aspect-ratio:1.9/1; border:1px solid var(--line); border-radius:var(--radius-s); background:var(--void-deep); overflow:hidden; }
+  .s-name{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); font-style:italic; }
+  .s-role{ font-size:15px; color:var(--starlight); }
+  .s-area{ font-family:var(--font-mono); font-size:10.5px; color:var(--signal-dim); text-transform:uppercase; letter-spacing:0.06em; }
+
+  .join-panel{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; padding: clamp(28px,4vw,44px); background: var(--panel); border:1px solid var(--line); border-radius: var(--radius-m); }
+  .join-panel p{ max-width:56ch; color:var(--text-dim); font-size:14px; line-height:1.65; }
+
+  .team-cat{ margin-bottom: 26px; }
+  .team-cat:last-child{ margin-bottom:0; }
+  .cat-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--signal); margin-bottom:16px; }
+
+ 
+  body[data-page="team"] section:not(.hero) .eyebrow{ font-size: 22px; letter-spacing:0.03em; gap:12px; line-height:1.1; }
+  body[data-page="team"] section:not(.hero) .eyebrow::before{ width:26px; height:1.5px; }
+  body[data-page="team"] .cat-label{ font-size: 21px; letter-spacing:0.03em; margin-bottom:14px; line-height:1.1; }
+
+  .team-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; }
+  @media (max-width:700px){ .team-grid{ grid-template-columns: 1fr; } }
+  .team-card{ padding:20px 22px; display:flex; flex-direction:column; gap:12px; }
+  .team-top{ display:flex; gap:16px; align-items:flex-start; }
+ 
+  .team-avatar{ width:clamp(76px, 8vw, 96px); aspect-ratio:3/4; flex:none; border:1px solid var(--line-strong); border-radius:var(--radius-s); overflow:hidden; background:var(--void-deep); }
+  .team-name{ font-size:16px; color:var(--starlight); }
+  .team-role{ font-family:var(--font-mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; margin-top:2px; }
+  .team-area{ font-family:var(--font-mono); font-size:10.5px; color:var(--signal-dim); text-transform:uppercase; letter-spacing:0.06em; margin-top:3px; }
+  .team-desc{ font-size:13.5px; color:var(--text-dim); line-height:1.65; }
+  .team-links{ display:flex; gap:10px; margin-top:2px; }
+  .team-icon{ width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:50%; color:var(--text-faint); overflow:hidden; }
+  .team-icon svg{ width:14px; height:14px; }
+  .team-icon img{ width:14px; height:14px; border-radius:2px; }
+  .team-icon-fallback{ display:none; align-items:center; justify-content:center; width:14px; height:14px; }
+  .team-icon:hover{ color:var(--signal); border-color:var(--signal-dim); }
+
+  .undergrad-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .undergrad-chip{ padding:10px 16px; border:1px solid var(--line); border-radius:999px; font-size:13.5px; color:var(--starlight-dim); display:flex; align-items:center; gap:8px; }
+  .chip-area{ font-family:var(--font-mono); font-size:10px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; }
+
+  .empty-note{ font-size:13px; color:var(--text-faint); font-style:italic; }
+
+  .past-list{ display:flex; flex-wrap:wrap; gap:8px 0; font-size:14px; color:var(--text-dim); line-height:2; }
+  .past-name:not(:last-child)::after{ content:"\00b7"; margin:0 12px; color:var(--line-strong); }
+  .past-context{ font-size:12.5px; color:var(--text-faint); }
+  .past-current{ font-size:12.5px; color:var(--signal-dim); }
+</style>
+</head>
+<body data-page="team">
+<div id="bgfield"></div>
+<canvas id="stars"></canvas>
+<div class="nebula n1"></div>
+<div class="nebula n2"></div>
+<div class="nebula n3"></div>
+
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--signal)">
+        <ellipse cx="15" cy="18" rx="11" ry="4.4" transform="rotate(-16 15 18)" opacity="0.55"></ellipse>
+        <circle cx="24.6" cy="14.2" r="1.4" fill="currentColor" stroke="none"></circle>
+        <path d="M6 24 A11 11 0 0 1 24 17" stroke-linecap="round"></path>
+        <path d="M15 21 L15 13 M11.5 15.5 L15 13 L18.5 15.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+      </svg>
+      <span class="brand-text">
+        <span class="full">Cornell Extreme Astrophysics</span>
+        <span class="sub">Radio Astronomy Group</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="team.html" data-nav="team">Team</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="outreach.html" data-nav="outreach">Outreach</a></li>
+      <li><a href="contact.html" data-nav="contact">Contact</a></li>
+    </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.1 5.9l-1.5 1.5M7.4 16.6l-1.5 1.5M18.1 18.1l-1.5-1.5M7.4 7.4 5.9 5.9" stroke-linecap="round"></path></svg>
+        </button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+    </button>
+      </div>
+  </div>
+</nav>
+
+<main>
+
+
+  <section class="wrap">
+    <p class="eyebrow" style="margin-bottom:24px;">Principal investigators</p>
+    <div class="pi-grid">
+
+      <div class="card pi-card" data-observe>
+        <div class="pi-top">
+          <div class="avatar">
+            <!-- real photo, if present in team-hshots/ — falls back to the generated placeholder below if the file isn't there yet -->
+            <img src="team-hshots/cordes.jpg" alt="Prof. James M. Cordes" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display:none;">
+            <svg viewBox="0 0 84 84" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+              <rect width="84" height="84" fill="var(--void-deep)"></rect>
+              <g stroke="var(--signal)" stroke-width="1" opacity="0.9">
+                <line x1="42" y1="42" x2="42" y2="6"></line>
+                <line x1="42" y1="42" x2="66" y2="18"></line>
+                <line x1="42" y1="42" x2="76" y2="42"></line>
+                <line x1="42" y1="42" x2="66" y2="66"></line>
+                <line x1="42" y1="42" x2="42" y2="78"></line>
+                <line x1="42" y1="42" x2="18" y2="66"></line>
+                <line x1="42" y1="42" x2="8" y2="42"></line>
+                <line x1="42" y1="42" x2="18" y2="18"></line>
+              </g>
+              <circle cx="42" cy="42" r="5" fill="var(--signal)"></circle>
+              <circle cx="42" cy="42" r="14" fill="none" stroke="var(--signal-dim)" stroke-width="0.8" opacity="0.6"></circle>
+              <circle cx="42" cy="42" r="24" fill="none" stroke="var(--signal-dim)" stroke-width="0.6" opacity="0.35"></circle>
+            </svg>
+            </span>
+          </div>
+          <div>
+            <div class="pi-name">Prof. James M. Cordes</div>
+            <div class="pi-title">George Feldstein Professor of Astronomy</div>
+            <div class="pi-sub">jmc33@cornell.edu &middot; Space Sciences Bldg 510</div>
+          </div>
+        </div>
+        <div class="pi-bio">Prof. Cordes works across neutron stars, pulsars, black holes, gravitational waves, and fast radio bursts, with a long-running interest in how radio signals propagate through turbulent plasma in the interstellar medium. A long-time NANOGrav member, he now serves as the collaboration&rsquo;s liaison to the Deep Synoptic Array. A large pulsar survey run under his direction, using the Arecibo telescope, turned up the first known repeating fast radio burst. He also spent a decade contributing to the development of the Square Kilometre Array, and keeps a side interest in astrobiology and SETI.</div>
+        <div class="pi-foot">
+          <span class="tag on">Gravitational waves</span>
+          <span class="tag on">Fast radio bursts</span>
+          <span class="tag">ISM propagation</span>
+          <span class="tag">SETI</span>
+        </div>
+      </div>
+
+      <div class="card pi-card" data-observe>
+        <div class="pi-top">
+          <div class="avatar">
+            <!-- real photo, if present in team-hshots/ — falls back to the generated placeholder below if the file isn't there yet -->
+            <img src="team-hshots/chatterjee.jpg" alt="Prof. Shami Chatterjee" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display:none;">
+            <svg viewBox="0 0 84 84" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+              <rect width="84" height="84" fill="var(--void-deep)"></rect>
+              <ellipse cx="42" cy="44" rx="30" ry="13" fill="none" stroke="var(--cyan)" stroke-width="1" transform="rotate(-14 42 44)" opacity="0.9"></ellipse>
+              <ellipse cx="42" cy="44" rx="20" ry="8.5" fill="none" stroke="var(--cyan)" stroke-width="0.7" transform="rotate(-14 42 44)" opacity="0.5"></ellipse>
+              <circle cx="66" cy="34" r="3" fill="var(--cyan)"></circle>
+              <circle cx="20" cy="52" r="4.5" fill="var(--starlight-dim)"></circle>
+              <circle cx="42" cy="44" r="1.4" fill="var(--text-faint)"></circle>
+            </svg>
+            </span>
+          </div>
+          <div>
+            <div class="pi-name">Prof. Shami Chatterjee</div>
+            <div class="pi-title">Associate Professor of Astronomy</div>
+            <div class="pi-sub">shami.chatterjee@cornell.edu &middot; Space Sciences Bldg 507</div>
+          </div>
+        </div>
+        <div class="pi-bio">Prof. Chatterjee earned his Ph.D. at Cornell in 2003, advised by Prof. Jim Cordes, then held postdoctoral positions at the Harvard&ndash;Smithsonian Center for Astrophysics and the National Radio Astronomy Observatory, followed by a fellowship in Australia. He now works on pulsar timing arrays, fast radio bursts, and high-precision astrometry. He led the discovery and localization of the repeating burst FRB&nbsp;121102 to its host galaxy and has traced pulsars moving fast enough to escape the Milky Way. He is also affiliated with the Carl Sagan Institute and runs a public FRB community newsletter.</div>
+        <div class="pi-foot">
+          <span class="tag on">Fast radio bursts</span>
+          <span class="tag on">Pulsar timing arrays</span>
+          <span class="tag">Astrometry</span>
+          <span class="tag">Carl Sagan Institute</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head" data-observe>
+      <p class="eyebrow">Students &amp; researchers</p>
+      <!-- <h2>The people running the pipeline</h2> -->
+    </div>
+
+    <div class="team-cat" data-observe>
+      <p class="cat-label">Staff</p>
+      <div class="team-grid" id="team-staff">
+        <p class="empty-note">Roster confirmation pending &mdash; check back soon.</p>
+      </div>
+    </div>
+
+    <div class="team-cat" data-observe>
+      <p class="cat-label">Graduate students</p>
+      <div class="team-grid" id="team-grad">
+        <p class="empty-note">Roster confirmation pending &mdash; check back soon.</p>
+      </div>
+    </div>
+
+    <div class="team-cat" data-observe>
+      <p class="cat-label">Undergraduates</p>
+      <div class="undergrad-grid" id="team-undergrad">
+        <p class="empty-note">Roster confirmation pending &mdash; check back soon.</p>
+      </div>
+    </div>
+
+    <div class="team-cat" data-observe id="team-unclassified-section">
+      <p class="cat-label">Current roster &middot; classification pending</p>
+      <p class="lede" style="margin-bottom:20px;">Group members whose recent work we could verify via NASA ADS &mdash; to be sorted into Staff, Graduate students, or Undergraduates above once confirmed.</p>
+      <div class="undergrad-grid" id="team-unclassified">
+        <div class="undergrad-chip">Jacob E. Turner <span class="chip-area">Gravitational Waves</span></div>
+        <div class="undergrad-chip">Lydia Guertin <span class="chip-area">Gravitational Waves</span></div>
+        <div class="undergrad-chip">Alexandra C. Rosenthal <span class="chip-area">Cornell Extreme Astrophysics</span></div>
+        <div class="undergrad-chip">Sashabaw Niedbalski <span class="chip-area">Cornell Extreme Astrophysics</span></div>
+        <div class="undergrad-chip">B. Jacobson-Bell <span class="chip-area">Cornell Extreme Astrophysics</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="wrap">
+    <div class="section-head" data-observe>
+      <p class="eyebrow">Past members</p>
+    </div>
+    <p class="past-list" id="team-past">
+      <span class="empty-note">List coming soon.</span>
+    </p>
+  </section>
+
+    <section class="wrap">
+    <div class="join-panel" data-observe>
+      <div>
+        <h3 style="font-size:22px; margin-bottom:8px;">Interested in joining?</h3>
+        <p>We take on graduate students through Cornell&rsquo;s Astronomy PhD program and host undergraduate and visiting researchers throughout the year. Reach out with a short note about what draws you to timing, bursts, or instrumentation.</p>
+      </div>
+      <a href="contact.html" class="btn">Get in touch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-grid">
+      <div>
+        <h4>Cornell Extreme Astrophysics</h4>
+        <p style="color:var(--text-dim); font-size:13.5px; line-height:1.8; max-width:34ch;">5th floor, Department of Astronomy, Cornell University<br>404 Space Sciences Building<br>Ithaca, NY 14853<br>United States</p>
+      </div>
+      <div>
+       <h4>Affiliated with</h4>
+        <div class="aff-logos">
+          <span class="aff-logo"><img src="logos/ipta.png" alt="International Pulsar Timing Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">IPTA</span></span>
+          <span class="aff-logo"><img src="logos/nanograv.png" alt="NANOGrav" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">NANOGrav</span></span>
+          <span class="aff-logo"><img src="logos/dsa.png" alt="Deep Synoptic Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">DSA</span></span>
+          <span class="aff-logo"><img src="logos/cornell.png" alt="Cornell University" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; opacity:1.0;"> <span class="aff-logo-fallback">Cornell</span></span>  
+        </div>
+      </div>
+      <div>
+        <h4>Affiliations</h4>
+        <p>NANOGrav Physics Frontiers Center</p>
+        <p>International Pulsar Timing Array</p>
+        <p>Cornell Center for Astrophysics &amp; Planetary Science</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="signal-strip">
+  <div class="wrap">
+    <span class="specimen">PSR J0437&minus;4715 &middot; P 5.76&nbsp;ms &middot; DM 2.64&nbsp;pc&nbsp;cm&#8315;&sup3; <span class="dot">&middot;</span> PSR J1909&minus;3744 &middot; P 2.95&nbsp;ms &middot; DM 10.39&nbsp;pc&nbsp;cm&#8315;&sup3;</span>
+    <span class="clock" data-utc-clock>00:00:00 UTC</span>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

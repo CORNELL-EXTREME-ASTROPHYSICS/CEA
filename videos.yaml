@@ -1,0 +1,59 @@
+# Cornell Extreme Astrophysics — tracked talks & media videos
+# --------------------------------------------------------------
+# update_videos.py reads this file to know which YouTube videos to
+# show on outreach.html. To add one:
+#
+#   1. Copy the video's normal watch URL from YouTube
+#      (https://www.youtube.com/watch?v=XXXXXXXXXXX — a "pp=" tracking
+#      parameter at the end, if present, is fine and gets ignored).
+#   2. Add a new "- url: ..." line below, in this exact shape (this
+#      file is read by a small parser, not a full YAML library, so
+#      stick to this shape).
+#   3. Optionally add a "choice: featured" line right under it to put
+#      that video in the large Featured panels on outreach.html.
+#      Leave it off (or set "choice: null") for a normal grid entry.
+#      This is the only human-set field in the whole pipeline — every
+#      other value (title, channel, thumbnail, embeddability) is
+#      looked up for real from YouTube, never guessed.
+#
+# Run `python3 update_videos.py` after editing this file — it looks
+# up the real title, channel, thumbnail, and whether the video allows
+# embedding for each URL below via YouTube's public oEmbed endpoint
+# (no API key needed), then regenerates videos.json and the static
+# fallback block in outreach.html.
+#
+# Which videos are "featured" is controlled ONLY by the "choice:"
+# lines below — reorder or add entries here freely, none of that
+# affects what's featured. Mark a video "choice: featured" to feature
+# it, or leave the line off to leave it in the grid.
+
+videos:
+  - url: "https://www.youtube.com/watch?v=Ff0b8hrM4G0"
+    choice: featured
+
+  - url: "https://www.youtube.com/watch?v=R_vcczQrKaM"
+    choice: featured
+
+  - url: "https://www.youtube.com/watch?v=nzSvlPPr3pk"
+    choice: featured
+
+  - url: "https://www.youtube.com/watch?v=oAAdmqHJV8g"
+
+  - url: "https://www.youtube.com/watch?v=RfbP4Xw1_NM"
+
+  - url: "https://www.youtube.com/watch?v=FonXhgeCScc"
+
+  - url: "https://www.youtube.com/watch?v=VjgPkds1UIo"
+
+  - url: "https://www.youtube.com/watch?v=p_EqX6R6Crk"
+
+  - url: "https://www.youtube.com/watch?v=taeABpFjjQg"
+
+  - url: "https://www.youtube.com/watch?v=zV6DL-EHSUQ"
+
+  - url: "https://www.youtube.com/watch?v=VXQBJL7IR6I"
+
+  - url: "https://www.youtube.com/watch?v=fPEewlxpD_c"
+
+  # names Ben Jacobson-Bell directly in the real YouTube title
+  - url: "https://www.youtube.com/watch?v=eml6lBrVMK8"

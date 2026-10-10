@@ -1,0 +1,414 @@
+/* ============================================================
+   Cornell Extreme Astrophysics — shared design system
+   One design language, two finishes, switched via [data-theme]
+   on <html> — same type, same card/nav/button construction, same
+   pen-draw chart motif in both:
+   - light (default): white marble, ink-black stars
+   - dark: matte black, silver stars
+   ============================================================ */
+
+:root{
+  /* ---------- LIGHT THEME (default) — white marble ----------
+     Background tokens dialed down ~10% from pure white marble —
+     the starker white made body text harder to read at a glance. */
+  --void:        #dcdad4;
+  --void-deep:   #d1cdc3;
+  --panel:       #e4e3e0;
+  --panel-raised:#d7d4ca;
+  --line:         rgba(25,24,20,0.13);
+  --line-strong:  rgba(25,24,20,0.30);
+
+  --signal:      #a83626;
+  --signal-soft: #c25640;
+  --signal-dim:  #7d2c1f;
+
+  --starlight:     #171613;
+  --starlight-dim: #46443c;
+  --text:          #2b2a24;
+  --text-dim:      #5c594e;
+  --text-faint:    #8a8778;
+
+  /* strip-bg/fg: deliberately the INVERSE of the theme's own palette,
+     so the fixed bottom signal strip always reads as a contrasting
+     instrument-panel band rather than blending into the page. */
+  --strip-bg: #171613;
+  --strip-fg: #d9d7cc;
+  --strip-accent: #ff8267;
+
+  /* secondary ink colors for diagrams — kept muted and low-chroma
+     so nothing reads as "cosmic blue/purple glow" */
+  --nebula: #55574c;
+  --burst:  #b6502c;
+  --cyan:   #3f6b63;
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body:    "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-mono:    "Space Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius-s: 2px;
+  --radius-m: 2px;
+  --card-bg: var(--panel);
+  --card-shadow: 3px 3px 0 rgba(25,24,20,0.08);
+  --nav-bg: var(--void);
+  --nav-blur: none;
+  --nav-border-bottom: 2px solid var(--starlight);
+  --nav-shadow: 0 3px 0 -2px var(--line);
+  --btn-border-color: var(--starlight);
+  --btn-hover-bg: var(--starlight);
+  --btn-hover-fg: var(--void);
+  --em-style: normal;
+  --em-decoration: underline;
+  --em-decoration-color: var(--line-strong);
+  --em-color: var(--signal);
+
+  --gutter: max(20px, 5vw);
+  --measure: 700px;
+
+  color-scheme: light;
+}
+
+/* ---------- DARK THEME — matte black ----------
+   Same construction as the light theme above (same fonts, same
+   card/nav/button shapes, same underline emphasis) — only the
+   palette inverts. No blue undertone, no gold accent, no glass
+   blur: just black, off-white, and the same brick-red signal. */
+:root[data-theme="dark"]{
+  --void:        #060605;
+  --void-deep:   #000000;
+  --panel:       #111110;
+  --panel-raised:#19180f;
+  --line:         rgba(240,239,233,0.12);
+  --line-strong:  rgba(240,239,233,0.26);
+
+  --signal:      #ff6a4d;
+  --signal-soft: #ff9078;
+  --signal-dim:  #b8492f;
+
+  --starlight:     #f3f2ec;
+  --starlight-dim: #b9b7ac;
+  --text:          #c9c7ba;
+  --text-dim:      #8f8d81;
+  --text-faint:    #64635a;
+
+  --nebula: #9a9f8d;
+  --burst:  #ff7a55;
+  --cyan:   #7fb0a0;
+
+  --card-bg: var(--panel);
+  --card-shadow: 3px 3px 0 rgba(240,239,233,0.05);
+
+  --strip-bg: #f3f2ec;
+  --strip-fg: #26251f;
+  --strip-accent: #b8492f;
+
+  color-scheme: dark;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; }
+body{
+  background-color: var(--void);
+  /* white marble: soft mottled clouding plus two faint veins —
+     replaced in the dark theme below with flat matte black */
+  background-image:
+    radial-gradient(ellipse 60% 42% at 12% 18%, rgba(30,29,23,0.05), transparent 60%),
+    radial-gradient(ellipse 46% 34% at 88% 12%, rgba(30,29,23,0.045), transparent 58%),
+    radial-gradient(ellipse 52% 40% at 78% 88%, rgba(30,29,23,0.05), transparent 60%),
+    radial-gradient(ellipse 38% 30% at 20% 92%, rgba(30,29,23,0.04), transparent 55%),
+    linear-gradient(103deg, transparent 41%, rgba(30,29,23,0.03) 42%, transparent 43.4%, transparent 66%, rgba(30,29,23,0.024) 67%, transparent 68.4%),
+    linear-gradient(163deg, transparent 30%, rgba(30,29,23,0.022) 31%, transparent 32.2%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color .25s ease, color .25s ease;
+  padding-bottom: 38px; /* reserves room for the fixed .signal-strip so it never overlaps the footer */
+}
+:root[data-theme="dark"] body{ background-image: none; }
+img, svg{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4,p,figure{ margin:0; }
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  color: var(--starlight);
+  font-weight: 700;
+  text-wrap: balance;
+  letter-spacing: 0.002em;
+  line-height: 1.05;
+}
+button{ font-family: inherit; }
+[hidden]{ display:none !important; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior:auto !important; }
+}
+
+/* ---------- background field: stars, in both themes ----------
+   Ink-black flecks on the marble theme, silver on the black theme —
+   see Starfield.dotColor() in script.js. The old blurred nebula
+   blobs are dropped entirely: no colored glow, in either theme. */
+#bgfield, canvas#stars{ display: block; }
+#bgfield{
+  position: fixed; inset: 0; z-index: -3; background: transparent; pointer-events: none;
+}
+canvas#stars{ position: fixed; inset: 0; z-index: -2; width:100%; height:100%; }
+.nebula{ display: none; }
+
+/* ---------- pen-draw: the one orchestrated motion motif ----------
+   Chart-trace paths draw themselves once, like a recorder needle,
+   the instant the page settles. Nothing ambient, nothing looping. */
+.pen-draw{
+  animation: pen-draw 1.4s cubic-bezier(.3,.75,.3,1) forwards;
+}
+@keyframes pen-draw{
+  from{ stroke-dashoffset: var(--len, 1000); }
+  to{ stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .pen-draw{ animation: none; stroke-dashoffset: 0 !important; }
+}
+
+/* [data-observe] is a legacy hook kept for structure only — everything is
+   fully visible at rest, nothing is ever hidden waiting on a scroll observer. */
+[data-observe]{ opacity: 1; transform: none; }
+
+/* ---------- layout helpers ---------- */
+.wrap{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.measure{ max-width: var(--measure); }
+section{ padding-block: clamp(20px, 3.5vw, 44px); }
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before{
+  content:"";
+  width: 22px; height: 1px;
+  background: var(--signal-dim);
+  display:inline-block;
+}
+.section-head{ display:flex; flex-direction:column; gap:8px; margin-bottom: 16px; }
+.section-head h2{ font-size: clamp(30px, 3.8vw, 46px); }
+.section-head .lede{ color: var(--text-dim); max-width: 620px; font-size: 1.02rem; font-family: var(--font-body); }
+
+hr.rule{ border:0; border-top:1px solid var(--line); margin-block: 0; }
+
+/* keeps an anchor-linked section (e.g. research.html#publications) from
+   landing tucked under the sticky nav bar */
+[id]{ scroll-margin-top: 88px; }
+
+/* ---------- nav ---------- */
+.site-nav{
+  position: sticky; top:0; z-index: 50; /* above .signal-strip (40) so the mobile menu overlay isn't clipped by it */
+  background: var(--nav-bg);
+  backdrop-filter: var(--nav-blur);
+  border-bottom: var(--nav-border-bottom);
+  box-shadow: var(--nav-shadow);
+}
+.site-nav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height: 66px;
+  max-width: 1180px;
+}
+.brand{ display:flex; align-items:center; gap:11px; }
+.brand svg{ width: 28px; height: 28px; flex: none; }
+.brand-text{ display:flex; flex-direction:column; line-height:1.05; }
+.brand-text .full{ font-family: var(--font-display); font-weight:700; font-size: 17px; color: var(--starlight); letter-spacing:0.01em; }
+.brand-text .sub{ font-family: var(--font-mono); font-size: 9.5px; letter-spacing:0.13em; color: var(--text-faint); text-transform:uppercase; margin-top:2px; }
+
+.nav-links{ display:flex; align-items:center; gap: 2px; }
+.nav-links a{
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 9px 13px;
+  border-radius: var(--radius-s);
+  position: relative;
+  transition: color .15s ease;
+}
+.nav-links a:hover{ color: var(--starlight); }
+.nav-links a.active{ color: var(--signal); }
+.nav-links a.active::after{
+  content:"";
+  position:absolute; left:13px; right:13px; bottom:4px;
+  height:2px; background: var(--signal);
+}
+
+.nav-controls{ display:flex; align-items:center; gap:8px; }
+.theme-toggle, .nav-toggle{
+  display:flex; align-items:center; justify-content:center;
+  width: 34px; height:34px;
+  border:1px solid var(--line-strong); border-radius: var(--radius-s);
+  background: transparent; color: var(--starlight);
+  cursor:pointer;
+}
+.nav-toggle{ display:none; }
+.theme-toggle svg, .nav-toggle svg{ width:16px; height:16px; }
+.theme-toggle .icon-sun{ display:none; }
+.theme-toggle .icon-moon{ display:block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
+
+@media (max-width: 860px){
+  .nav-links{
+    position:fixed; inset: 66px 0 0 0;
+    background: var(--void);
+    flex-direction:column; align-items:stretch;
+    padding: 10px var(--gutter) 28px;
+    gap: 0;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--line);
+  }
+  .nav-links.open{ opacity:1; pointer-events:auto; transform: translateY(0); }
+  .nav-links a{ padding: 14px 4px; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .nav-toggle{ display:flex; }
+}
+
+/* ---------- buttons / links ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family: var(--font-mono);
+  font-size: 12.5px; letter-spacing:0.06em; text-transform:uppercase;
+  padding: 12px 20px;
+  border: 1.5px solid var(--btn-border-color);
+  border-radius: var(--radius-s);
+  color: var(--starlight);
+  background: transparent;
+  transition: background .15s ease, color .15s ease;
+}
+.btn:hover{ background: var(--btn-hover-bg); color: var(--btn-hover-fg); }
+.btn.ghost{ border-color: var(--line-strong); color: var(--text); }
+.btn.ghost:hover{ background: var(--panel-raised); color: var(--starlight); border-color:var(--btn-border-color); }
+.text-link{ color: var(--signal); border-bottom:1px solid var(--signal-dim); padding-bottom:1px; }
+.text-link:hover{ color: var(--signal-dim); border-color: var(--signal-dim); }
+
+/* emphasis accent (the "extreme" in the home hero) */
+.accent-em{
+  font-style: var(--em-style);
+  color: var(--em-color);
+  text-decoration: var(--em-decoration);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--em-decoration-color);
+}
+
+/* ---------- cards ---------- */
+.card{
+  background: var(--card-bg);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+  box-shadow: var(--card-shadow);
+  padding: 26px;
+}
+.tag{
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing:0.08em; text-transform:uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.tag.on{ color: var(--signal); border-color: var(--signal-dim); }
+
+/* ---------- footer / signal strip ---------- */
+footer.site-footer{
+  border-top: 1px solid var(--line-strong);
+  margin-top: clamp(24px, 3.5vw, 44px);
+}
+.footer-main{ padding-block: 26px 20px; }
+.footer-grid{
+  display:grid;
+  grid-template-columns: 1.1fr 1.1fr 1fr;
+  gap: 40px;
+}
+.footer-grid h4{
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing:0.1em; text-transform:uppercase;
+  color: var(--text-faint); margin-bottom: 14px; font-weight:500;
+}
+.footer-grid a, .footer-grid p{ color: var(--text-dim); font-size: 13.5px; line-height:2; font-family: var(--font-body); }
+.footer-grid a:hover{ color: var(--signal); }
+@media (max-width: 720px){
+  .footer-grid{ grid-template-columns: 1fr; gap: 28px; }
+}
+
+
+.aff-logos{ display:flex; flex-wrap:nowrap; align-items:center; gap:16px; margin-top:8px; overflow-x:auto; }
+.aff-logo{ display:flex; align-items:center; justify-content:center; height:136px; flex:none; opacity:0.92;}
+.aff-logo img{ max-height:76px; max-width:200px; object-fit:contain; display:block;  }
+.aff-logo-fallback{
+  display:none; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.04em;
+  color:var(--text-faint); white-space:nowrap;
+}
+
+/* always on screen — not just at the bottom of the page — so the
+   pulsar readout reads as a permanent instrument strip, not a
+   footer element you have to scroll to find */
+.signal-strip{
+  position: fixed; left:0; right:0; bottom:0; z-index: 40;
+  border-top: 1px solid var(--line-strong);
+  /* inverted against the page background on purpose — see --strip-bg/fg above */
+  background: var(--strip-bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--strip-fg);
+  overflow: hidden;
+}
+.signal-strip .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height: 38px; gap: 18px;
+  max-width: 1180px;
+}
+.signal-strip .clock{ color: var(--strip-accent); white-space:nowrap; }
+.signal-strip .specimen{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color: var(--strip-fg); opacity:0.75; }
+.signal-strip .dot{ color: var(--strip-fg); opacity:0.4; }
+@media (max-width: 640px){
+  .signal-strip .specimen{ display:none; }
+}
+
+/* ---------- page hero shared ---------- */
+.hero{
+  padding-block: clamp(18px, 3vw, 36px) clamp(20px, 3vw, 36px);
+  position: relative;
+}
+.hero .kicker{ margin-bottom: 22px; }
+.hero h1{
+  font-size: clamp(40px, 6.4vw, 78px);
+  line-height: 1.0;
+  max-width: 15ch;
+}
+.hero .dek{
+  margin-top: 22px;
+  max-width: 620px;
+  font-size: clamp(16px, 1.6vw, 19px);
+  color: var(--text-dim);
+  font-family: var(--font-body);
+}
+
+/* ---------- misc ---------- */
+.mono{ font-family: var(--font-mono); }
+.center{ text-align:center; }
+.stat{ display:flex; flex-direction:column; gap:6px; }
+.stat .n{ font-family: var(--font-display); font-weight:700; font-size: clamp(32px,3.2vw,42px); color: var(--starlight); font-variant-numeric: tabular-nums; }
+.stat .l{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color: var(--text-faint); }

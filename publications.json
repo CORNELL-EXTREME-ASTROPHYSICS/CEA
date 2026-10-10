@@ -1,0 +1,86 @@
+{
+  "generated": "2026-09-23",
+  "source": "Seeded by hand from NASA ADS and arXiv; refresh with update_publications.py and a free ADS API token.",
+  "items": [
+    {
+      "title": "A Cyclic Spectroscopy Scintillation Study of PSR B1937+21 I. Demonstration of Improved Scintillometry",
+      "authors": "J. E. Turner, T. Dolch, J. M. Cordes, S. K. Ocker, D. R. Stinebring, S. Chatterjee, et al.",
+      "year": "2024",
+      "journal": "arXiv preprint (venue unconfirmed)",
+      "tags": ["gw", "instr"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22A%20Cyclic%20Spectroscopy%20Scintillation%20Study%20of%20PSR%20B1937%2B21%22&sort=date%20desc"
+    },
+    {
+      "title": "The NANOGrav 15 yr Data Set: Evidence for a Gravitational-Wave Background",
+      "authors": "G. Agazie et al. — NANOGrav Collaboration, incl. J. M. Cordes & S. Chatterjee",
+      "year": "2023",
+      "journal": "The Astrophysical Journal Letters",
+      "tags": ["gw"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20NANOGrav%2015%20yr%20Data%20Set%3A%20Evidence%20for%20a%20Gravitational-Wave%20Background%22&sort=date%20desc"
+    },
+    {
+      "title": "The NANOGrav 15-year Data Set: Observations and Timing of 68 Millisecond Pulsars",
+      "authors": "G. Agazie et al. — NANOGrav Collaboration, incl. J. M. Cordes & S. Chatterjee",
+      "year": "2023",
+      "journal": "The Astrophysical Journal Letters",
+      "tags": ["gw", "instr"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20NANOGrav%2015-year%20Data%20Set%3A%20Observations%20and%20Timing%20of%2068%20Millisecond%20Pulsars%22&sort=date%20desc"
+    },
+    {
+      "title": "The NANOGrav 12.5-year Data Set: Search For An Isotropic Stochastic Gravitational-Wave Background",
+      "authors": "Z. Arzoumanian et al. — NANOGrav Collaboration, incl. J. M. Cordes & S. Chatterjee",
+      "year": "2020",
+      "journal": "The Astrophysical Journal Letters",
+      "tags": ["gw"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20NANOGrav%2012.5-year%20Data%20Set%3A%20Search%20For%20An%20Isotropic%20Stochastic%20Gravitational-Wave%20Background%22&sort=date%20desc"
+    },
+    {
+      "title": "Fast Radio Bursts: An Extragalactic Enigma",
+      "authors": "J. M. Cordes & S. Chatterjee",
+      "year": "2019",
+      "journal": "Annual Review of Astronomy and Astrophysics · review",
+      "tags": ["frb"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22Fast%20Radio%20Bursts%3A%20An%20Extragalactic%20Enigma%22&sort=date%20desc"
+    },
+    {
+      "title": "Twelve Decades: Probing the Interstellar Medium from kiloparsec to sub-AU scales",
+      "authors": "D. Stinebring, S. Chatterjee, S. E. Clark, J. M. Cordes, et al.",
+      "year": "2019",
+      "journal": "Astro2020 Decadal Survey science white paper",
+      "tags": ["instr"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22Twelve%20Decades%3A%20Probing%20the%20Interstellar%20Medium%20from%20kiloparsec%20to%20sub-AU%20scales%22&sort=date%20desc"
+    },
+    {
+      "title": "The direct localization of a fast radio burst and its host",
+      "authors": "S. Chatterjee, C. J. Law, R. S. Wharton, et al.",
+      "year": "2017",
+      "journal": "Nature · first FRB localization",
+      "tags": ["frb"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20direct%20localization%20of%20a%20fast%20radio%20burst%20and%20its%20host%22&sort=date%20desc"
+    },
+    {
+      "title": "The Host Galaxy and Redshift of the Repeating Fast Radio Burst FRB 121102",
+      "authors": "S. P. Tendulkar, C. G. Bassa, J. M. Cordes, et al.",
+      "year": "2017",
+      "journal": "The Astrophysical Journal Letters",
+      "tags": ["frb"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20Host%20Galaxy%20and%20Redshift%20of%20the%20Repeating%20Fast%20Radio%20Burst%20FRB%20121102%22&sort=date%20desc"
+    },
+    {
+      "title": "A Second Chromatic Timing Event of Interstellar Origin toward PSR J1713+0747",
+      "authors": "M. T. Lam, J. A. Ellis, G. Grillo, et al., incl. S. Chatterjee & J. M. Cordes",
+      "year": "2017",
+      "journal": "The Astrophysical Journal Letters",
+      "tags": ["gw", "instr"],
+      "link": "https://ui.adsabs.harvard.edu/search/q=title%3A%22A%20Second%20Chromatic%20Timing%20Event%20of%20Interstellar%20Origin%20toward%20PSR%20J1713%2B0747%22&sort=date%20desc"
+    },
+    {
+      "title": "NE2001.I. A New Model for the Galactic Distribution of Free Electrons and its Fluctuations",
+      "authors": "J. M. Cordes & T. J. W. Lazio",
+      "year": "2002",
+      "journal": "arXiv:astro-ph/0207156 · the group's widely-used Galactic electron-density model",
+      "tags": ["instr"],
+      "link": "https://arxiv.org/abs/astro-ph/0207156"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "members": [
+    { "name": "Jacob E. Turner", "category": "staff", "role": "Postdoctoral Researcher", "area": "Cyclic Spectroscopy", "description": "Exploring applications of cyclic spectroscopy to pulsar timing, and recently helped to develop the world's first cyclic spectroscopy backend for the GBT.", "links": {"Website": "https://jturner28.github.io/", "GitHub": "https://github.com/jturner28", "Email": "jacob.turner@nanograv.org"} },
+    { "name": "Lydia Guertin", "category": "grad", "role": "Graduate Student", "area": "Gravitational Waves", "description": "Millisecond pulsar timing, probing the integrated density of the solar wind using the scattering of pulses, and characterizing the temporal and spatial variations of the interstellar medium.", "links": {"Email": "lydia.guertin@nanograv.org", "Website": "https://astro.cornell.edu/lydia-guertin"} },
+    { "name": "Sashabaw Niedbalski", "category": "grad", "role": "Graduate Student", "area": "Galactic Radio Explorer", "description": "Interaction of coherent sub-second radio emission with different ionized environments between the emission source and detectors.", "links": {"Email": "sn526@cornell.edu", "Website": "https://astro.cornell.edu/sashabaw-niedbalski"} },
+    { "name": "Alexandra C. Rosenthal", "category": "grad", "role": "Graduate Student", "area": "Fast Radio Bursts", "description": "Using FRBs as probes to study the interstellar medium and cosmological environments.", "links": {"Email": "acr244@cornell.edu", "Website": "https://astro.cornell.edu/alex-rosenthal"} },
+    { "name": "B. Jacobson-Bell", "category": "grad", "role": "Graduate Student", "area": "Pulsar Timing Array", "description": null, "links": {"Email": "benjacobsonbell@berkeley.edu", "Website": "https://astro.berkeley.edu/people/ben-jacobson-bell"} },
+    { "name": "Elina Stengle", "category": "undergrad", "role": "Undergraduate Student", "area": "Extraterrestial Technosignatures", "description": null, "photo": null, "links": {} },
+    { "name": "Kayden Hansong", "category": "undergrad", "role": "Undergraduate Student", "area": "Interferometer design", "description": null, "photo": null, "links": {} },
+    { "name": "Shan Parmar", "category": "undergrad", "role": "Post-Bac Intern", "area": "Neural Networks", "description": "Working on ML optimization in PTA.", "photo": null, "links": {"Website": "shantanusinhparmar.com"} },
+    { "name": "Bobby King", "category": "undergrad", "role": "Undergraduate Student", "area": "Pulsar Timing Array", "description": null, "photo": null, "links": {} },
+    { "name": "Audrey Horn", "category": "undergrad", "role": "Undergraduate Student", "area": "Dispersion Medium", "description": null, "photo": null, "links": {} },
+    { "name": "Angelina Risnoveanu", "category": "undergrad", "role": "Undergraduate Student", "area": "FRB Period Modelling", "description": null, "photo": null, "links": {} },
+    { "name": "Lyn Huang", "category": "undergrad", "role": "Undergraduate Student", "area": "SDRs", "description": null, "photo": null, "links": {} },
+    { "name": "Neha Nair", "category": "undergrad","role": "Undergraduate Student", "area": "Machine Learning", "description": null, "photo": null, "links": {} }
+
+  ],
+    "pastMembers": [
+      { "name": "Abra Geiger", "role": "Undergraduate Student", "area": "Interstellar Medium", "current": "Graduate Student at Stanford" },
+      { "name": "Jasmine barba", "role": "REU Student", "area": "Timing Noise", "current": "undergraduate Student at UCI" }
+    ]
+
+}

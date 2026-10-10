@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{if(localStorage.getItem('ceag-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+<title>Contact &mdash; Cornell Extreme Astrophysics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .rows{ display:flex; flex-direction:column; margin-top:4px; }
+  .row{ display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .row:first-child{ border-top:1px solid var(--line); }
+  .row .l{ color:var(--text-dim); font-size:13.6px; }
+  .row .r{ font-family:var(--font-mono); font-size:13px; color:var(--starlight-dim); text-align:right; }
+
+  .address-block{ display:flex; gap:18px; align-items:flex-start; }
+  .address-block svg{ width:30px; height:30px; flex:none; color:var(--signal); }
+</style>
+</head>
+<body data-page="contact">
+<div id="bgfield"></div>
+<canvas id="stars"></canvas>
+<div class="nebula n1"></div>
+<div class="nebula n2"></div>
+<div class="nebula n3"></div>
+
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--signal)">
+        <ellipse cx="15" cy="18" rx="11" ry="4.4" transform="rotate(-16 15 18)" opacity="0.55"></ellipse>
+        <circle cx="24.6" cy="14.2" r="1.4" fill="currentColor" stroke="none"></circle>
+        <path d="M6 24 A11 11 0 0 1 24 17" stroke-linecap="round"></path>
+        <path d="M15 21 L15 13 M11.5 15.5 L15 13 L18.5 15.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+      </svg>
+      <span class="brand-text">
+        <span class="full">Cornell Extreme Astrophysics</span>
+        <span class="sub">Radio Astronomy Group</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="team.html" data-nav="team">Team</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="outreach.html" data-nav="outreach">Outreach</a></li>
+      <li><a href="contact.html" data-nav="contact">Contact</a></li>
+    </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.1 5.9l-1.5 1.5M7.4 16.6l-1.5 1.5M18.1 18.1l-1.5-1.5M7.4 7.4 5.9 5.9" stroke-linecap="round"></path></svg>
+        </button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+    </button>
+      </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <!-- <p class="eyebrow">Contact</p> -->
+      <h2 style="margin-top:14px; font-size:clamp(30px,3.8vw,46px); color:var(--starlight);">Get in touch with us</h2>
+      <!-- <p class="dek" style="margin-top:14px;">Questions about the research, prospective-student inquiries, press requests, or outreach bookings &mdash; all welcome.</p> -->
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="card" style="padding:26px; margin-bottom:28px;" data-observe>
+      <div class="address-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.3"></circle></svg>
+        <div>
+          <h3>Cornell Extreme Astrophysics</h3>
+          <p class="line">5th floor, Department of Astronomy, Cornell University<br>404 Space Sciences Building, Ithaca, NY 14853</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:24px;" data-observe>
+      <p class="eyebrow">Principal investigators</p>
+    </div>
+    <div class="rows" data-observe>
+      <div class="row">
+        <span class="l">Prof. James M. Cordes &mdash; George Feldstein Professor of Astronomy</span>
+        <span class="r">jmc33@cornell.edu </span>
+      </div>
+      <div class="row">
+        <span class="l">Prof. Shami Chatterjee &mdash; Associate Professor of Astronomy</span>
+        <span class="r"><a href="https://hosting.astro.cornell.edu/~shami/" class="text-link" target="_blank" rel="noopener">faculty homepage</a></span>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:28px;" data-observe>
+      <p class="eyebrow">Elsewhere</p>
+    </div>
+    <div class="rows" data-observe>
+      <div class="row"><span class="l">NANOGrav Collaboration</span><span class="r"><a href="https://nanograv.org" class="text-link" target="_blank" rel="noopener">nanograv.org</a></span></div>
+      <div class="row"><span class="l">International Pulsar Timing Array</span><span class="r"><a href="https://ipta4gw.org" class="text-link" target="_blank" rel="noopener">ipta4gw.org</a></span></div>
+      <div class="row"><span class="l">Cornell Department of Astronomy</span><span class="r"><a href="https://astro.cornell.edu" class="text-link" target="_blank" rel="noopener">astro.cornell.edu</a></span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-grid">
+      <div>
+        <h4>Cornell Extreme Astrophysics</h4>
+        <p style="color:var(--text-dim); font-size:13.5px; line-height:1.8; max-width:34ch;">5th floor, Department of Astronomy, Cornell University<br>404 Space Sciences Building<br>Ithaca, NY 14853<br>United States</p>
+      </div>
+      <div>
+       <h4>Affiliated with</h4>
+        <div class="aff-logos">
+          <span class="aff-logo"><img src="logos/ipta.png" alt="International Pulsar Timing Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">IPTA</span></span>
+          <span class="aff-logo"><img src="logos/nanograv.png" alt="NANOGrav" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">NANOGrav</span></span>
+          <span class="aff-logo"><img src="logos/dsa.png" alt="Deep Synoptic Array" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="aff-logo-fallback">DSA</span></span>
+          <span class="aff-logo"><img src="logos/cornell.png" alt="Cornell University" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; opacity:1.0;"> <span class="aff-logo-fallback">Cornell</span></span>  
+        </div>
+      </div>
+      <div>
+        <h4>Affiliations</h4>
+        <p>NANOGrav Physics Frontiers Center</p>
+        <p>International Pulsar Timing Array</p>
+        <p>Cornell Center for Astrophysics &amp; Planetary Science</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="signal-strip">
+  <div class="wrap">
+    <span class="specimen">PSR J0437&minus;4715 &middot; P 5.76&nbsp;ms &middot; DM 2.64&nbsp;pc&nbsp;cm&#8315;&sup3; <span class="dot">&middot;</span> PSR J1909&minus;3744 &middot; P 2.95&nbsp;ms &middot; DM 10.39&nbsp;pc&nbsp;cm&#8315;&sup3;</span>
+    <span class="clock" data-utc-clock>00:00:00 UTC</span>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
